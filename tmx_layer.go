@@ -231,12 +231,14 @@ func (l *Layer) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	return nil
 }
 
-func (layer *Layer) GetTilePosition(tileID int) (int, int) {
-	x := tileID % layer._map.Width
-	y := tileID / layer._map.Width
-	return layer.OffsetX + x*layer._map.TileHeight, layer.OffsetY + y*layer._map.TileWidth
+// GetTilePosition returns the x,y position of the tileID on the current layer
+func (l *Layer) GetTilePosition(tileID int) (int, int) {
+	x := tileID % l._map.Width
+	y := tileID / l._map.Width
+	return l.OffsetX + x*l._map.TileHeight, l.OffsetY + y*l._map.TileWidth
 }
 
-func (layerTile *LayerTile) GetTileRect() image.Rectangle {
-	return layerTile.Tileset.GetTileRect(layerTile.ID)
+// GetTileRect returns the rectangle that contains the Tile in the original Tileset.Image
+func (t *LayerTile) GetTileRect() image.Rectangle {
+	return t.Tileset.GetTileRect(t.ID)
 }

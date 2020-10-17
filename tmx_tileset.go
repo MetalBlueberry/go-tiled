@@ -98,7 +98,7 @@ type AnimationFrame struct {
 	Duration uint32 `xml:"duration,attr"`
 }
 
-// GetTileRect returns a rectangle that contains the tile identified by ID
+// GetTileRect returns a rectangle that contains the tile in the tileset.Image
 func (tileset *Tileset) GetTileRect(tileID uint32) image.Rectangle {
 	tilesetTileCount := tileset.TileCount
 	tilesetColumns := tileset.Columns
